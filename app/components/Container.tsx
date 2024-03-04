@@ -4,7 +4,7 @@ import CardContainer from './CardContainer'
 
 const Container = () => {
   return (
-    <div className='min-h-screen w-screen flex flex-col justify-center align-middle space-y-6'>
+    <div className='min-h-screen w-full flex flex-col justify-center align-middle space-y-6'>
       <TextContainer />
       <CardContainer />
     </div>

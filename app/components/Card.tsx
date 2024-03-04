@@ -1,59 +1,88 @@
+import Image from 'next/image'
 import React from 'react'
+import data from './data.json'
+
+// interface for define data type
+interface Data {
+  id: string,
+  type: string,
+  name: string,
+  imagePath: string,
+  specs: string[],
+  discount: number,
+  price: number,
+  originPrice: number,
+  monthlyPrice: number,
+  delivery: string,
+  button: string,
+}
 
 const Card = () => {
   return (
-    <div className='flex flex-col shadow-lg rounded-md w-1/4'>
-      <div className='info px-5 py-3'>
-        <div className='space-y-3'>
-          <h1 className='rounded-full border px-2 inline-block text-sm text-slate-500 border-slate-500'>Prebuilt PC</h1>
-          <div className='w-auto h-36 flex justify-center align-middle'>
-            <img src='/image/Gaming PC Y40BG201.webp' className='object-contain'/>
-          </div>
-          <h1 className='text-base font-bold'>Creator RDY Y40BG201</h1>
-          <div>
-            <ul className='text-sm'>Windows 11 Pro</ul>
-            <ul className='text-sm'>Intel Core i9-13900KF CPU</ul>
-            <ul className='text-sm'>GeForce RTX 4090 24GB GPU</ul>
-            <ul className='text-sm'>2TB M.2 GEN4 NVMe SSD</ul>
-            <ul className='text-sm'>32GB DDR5-6000MHz RGB RAM</ul>
-          </div>
-        </div>
-      </div>
-      <div className='price px-5 py-3 bg-slate-100 space-y-3'>
-        <div>
-          <div className='rounded-full px-2 py-1 inline-block text-white bg-rose-500 text-xs'>SAVE $450</div>
-          <div className='flex space-x-2 items-end'>
-            <div className='text-2xl font-bold'>
-              $3,549
-            </div>
-            <div className='line-through text-slate-500 text-sm'>
-              $3,999
+    <>
+      {data.map((item: Data) => (
+        <div key={item.id} className='flex flex-col shadow-lg rounded-md w-full md:w-72'>
+          <div className='info px-5 py-3'>
+            <div className='space-y-3'>
+              <h1 className='rounded-full border px-2 inline-block text-sm text-slate-500 border-slate-500'>{item.type}</h1>
+              <div className='flex justify-center'>
+                <Image 
+                  src={item.imagePath}
+                  width={150}
+                  height={200}
+                  alt='pc'
+                />
+              </div>
+              <h1 className='text-base font-bold truncate'>{item.name}</h1>
+              <div>
+                {item.specs.map((spec: string,index: number) => (
+                  <ul className='text-sm' key={index}>{spec}</ul>
+                ))}
+              </div>
             </div>
           </div>
-          <div className='flex space-x-2 text-xs items-center'>
+          <div className='price px-5 py-3 bg-slate-100 space-y-3'>
             <div>
-              Starting at
+              <div className='rounded-full px-2 py-1 inline-block text-white bg-rose-500 text-xs font-thin'>SAVE ${item.discount}</div>
+              <div className='flex space-x-2 items-end'>
+                <div className='text-2xl font-bold'>
+                  ${item.price}
+                </div>
+                <div className='line-through text-slate-500 text-sm'>
+                  ${item.originPrice}
+                </div>
+              </div>
+              <div className='flex space-x-2 text-sm items-center'>
+                <div>
+                  Starting at
+                </div>
+                <div className='text-cyan-600 text-sm'>
+                  ${item.monthlyPrice}/mo
+                </div>
+                <div className=' text-sm'>
+                  with
+                </div>
+                <div className='flex justify-center'>
+                  <Image 
+                    src='/image/Icon Affirm.svg'
+                    width={40}
+                    height={30}
+                    alt='icon'
+                  />
+                </div>
+              </div>
             </div>
-            <div className='text-cyan-600 text-xs'>
-              $172.07/mo
-            </div>
-            <div className=' text-xs'>
-              with
-            </div>
-            <div className='w-auto h-6 flex justify-center align-middle'>
-              <img src='/image/Icon Affirm.svg' className='object-contain'/>
+            <div className='flex flex-row justify-between'>
+              <div>
+                <div className='text-sm font-bold'>Free Shipping</div>
+                <div className='text-sm truncate'>Delivery By {item.delivery}</div>
+              </div>
+              <button className='px-4 border-rose-500 border text-rose-500 rounded-full text-sm'>{item.button}</button>
             </div>
           </div>
         </div>
-        <div className='flex flex-row justify-between'>
-          <div>
-            <div className='text-sm font-bold'>Free Shipping</div>
-            <div className='text-sm'>Delivery By Friday, Jul 7</div>
-          </div>
-          <button className='px-4 border-rose-500 border text-rose-500 rounded-full text-sm'>Buy Now</button>
-        </div>
-      </div>
-    </div>
+      ))}
+    </>
   )
 }
 
