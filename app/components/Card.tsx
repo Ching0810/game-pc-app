@@ -1,27 +1,18 @@
 import Image from 'next/image'
 import React from 'react'
-import data from './data.json'
+import { DataItem } from './CardContainer'
 
 // interface for define data type
-interface Data {
-  id: string,
-  type: string,
-  name: string,
-  imagePath: string,
-  specs: string[],
-  discount: number,
-  price: number,
-  originPrice: number,
-  monthlyPrice: number,
-  delivery: string,
-  button: string,
+interface CardProps {
+  currentData: DataItem[]
 }
 
-const Card = () => {
+// dynamic render cards with json file data
+const Card: React.FC<CardProps> = ({currentData}) => {
   return (
     <>
-      {data.map((item: Data) => (
-        <div key={item.id} className='flex flex-col shadow-lg rounded-md w-full md:w-72'>
+      {currentData.map((item: DataItem) => (
+        <div key={item.id} className='flex flex-col shadow-lg rounded-xl w-full md:w-72'>
           <div className='info px-5 py-3'>
             <div className='space-y-3'>
               <h1 className='rounded-full border px-2 inline-block text-sm text-slate-500 border-slate-500'>{item.type}</h1>
@@ -41,7 +32,7 @@ const Card = () => {
               </div>
             </div>
           </div>
-          <div className='price px-5 py-3 bg-slate-100 space-y-3'>
+          <div className='price px-5 py-3 bg-slate-100 space-y-3 rounded-b-xl'>
             <div>
               <div className='rounded-full px-2 py-1 inline-block text-white bg-rose-500 text-xs font-thin'>SAVE ${item.discount}</div>
               <div className='flex space-x-2 items-end'>

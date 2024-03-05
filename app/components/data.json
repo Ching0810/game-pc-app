@@ -74,5 +74,100 @@
     "monthlyPrice": 99.83,
     "delivery": "07/18/2023",
     "button": "Customize"
+  },
+  {
+    "id": "5",
+    "type": "Custom PC",
+    "name": "AMD Ryzen 9 Ultra Gaming Daily",
+    "imagePath": "/image/Creator RDY LCMRG210.webp",
+    "specs": [
+      "Windows 11 Home",
+      "AMD Ryzen 9 7900X CPU",
+      "GeForce RTX 3080 - 10GB",
+      "1TB Crucial P3 M.2 NVMe SSD",
+      "32GB DDR5-5600MHz RGB RAM"
+    ],
+    "discount": 200,
+    "price": 2059,
+    "originPrice": 2259,
+    "monthlyPrice": 99.83,
+    "delivery": "07/18/2023",
+    "button": "Customize"
+  },
+  {
+    "id": "6",
+    "type": "Custom PC",
+    "name": "AMD Ryzen 9 Ultra Gaming Daily",
+    "imagePath": "/image/Creator RDY LCMRG210.webp",
+    "specs": [
+      "Windows 11 Home",
+      "AMD Ryzen 9 7900X CPU",
+      "GeForce RTX 3080 - 10GB",
+      "1TB Crucial P3 M.2 NVMe SSD",
+      "32GB DDR5-5600MHz RGB RAM"
+    ],
+    "discount": 200,
+    "price": 2059,
+    "originPrice": 2259,
+    "monthlyPrice": 99.83,
+    "delivery": "07/18/2023",
+    "button": "Customize"
+  },
+  {
+    "id": "7",
+    "type": "Custom PC",
+    "name": "AMD Ryzen 9 Ultra Gaming Daily",
+    "imagePath": "/image/Creator RDY LCMRG210.webp",
+    "specs": [
+      "Windows 11 Home",
+      "AMD Ryzen 9 7900X CPU",
+      "GeForce RTX 3080 - 10GB",
+      "1TB Crucial P3 M.2 NVMe SSD",
+      "32GB DDR5-5600MHz RGB RAM"
+    ],
+    "discount": 200,
+    "price": 2059,
+    "originPrice": 2259,
+    "monthlyPrice": 99.83,
+    "delivery": "07/18/2023",
+    "button": "Customize"
+  },
+  {
+    "id": "8",
+    "type": "Custom PC",
+    "name": "AMD Ryzen 9 Ultra Gaming Daily",
+    "imagePath": "/image/Creator RDY LCMRG210.webp",
+    "specs": [
+      "Windows 11 Home",
+      "AMD Ryzen 9 7900X CPU",
+      "GeForce RTX 3080 - 10GB",
+      "1TB Crucial P3 M.2 NVMe SSD",
+      "32GB DDR5-5600MHz RGB RAM"
+    ],
+    "discount": 200,
+    "price": 2059,
+    "originPrice": 2259,
+    "monthlyPrice": 99.83,
+    "delivery": "07/18/2023",
+    "button": "Customize"
+  },
+  {
+    "id": "9",
+    "type": "Custom PC",
+    "name": "AMD Ryzen 9 Ultra Gaming Daily",
+    "imagePath": "/image/Creator RDY LCMRG210.webp",
+    "specs": [
+      "Windows 11 Home",
+      "AMD Ryzen 9 7900X CPU",
+      "GeForce RTX 3080 - 10GB",
+      "1TB Crucial P3 M.2 NVMe SSD",
+      "32GB DDR5-5600MHz RGB RAM"
+    ],
+    "discount": 200,
+    "price": 2059,
+    "originPrice": 2259,
+    "monthlyPrice": 99.83,
+    "delivery": "07/18/2023",
+    "button": "Customize"
   }
 ]
