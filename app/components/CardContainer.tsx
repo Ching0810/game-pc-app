@@ -47,11 +47,10 @@ const CardContainer = () => {
     setPage(page - 1);
   }, [page])
 
-  const hammerManagerRef = useRef<Hammer.Manager | null>(null);
+  const hammerManagerRef = useRef<InstanceType<typeof Hammer.Manager> | null>(null);
 
   // effect to trigger swipe event
   useEffect(() => {
-    // Dynamically import Hammer.js only on the client side
     const loadHammer = async () => {
       if (typeof window !== 'undefined') {
         const Hammer = (await import('hammerjs')).default;
@@ -75,13 +74,12 @@ const CardContainer = () => {
 
     loadHammer();
 
-    // Cleanup on component unmount
     return () => {
       if (hammerManagerRef.current) {
         hammerManagerRef.current.destroy();
       }
     };
- }, [page, isSmallScreen, handlePrev, handleNext]) // Ensure handlePrev and handleNext are included in the dependency array
+  }, [page, isSmallScreen, handlePrev, handleNext]);// Ensure handlePrev and handleNext are included in the dependency array
 
 
   // effect to determine data for RWD render
