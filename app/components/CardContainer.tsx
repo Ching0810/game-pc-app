@@ -47,28 +47,41 @@ const CardContainer = () => {
     setPage(page - 1);
   }, [page])
 
+  const hammerManagerRef = useRef<Hammer.Manager | null>(null);
 
   // effect to trigger swipe event
   useEffect(() => {
-    if (cardRef.current) {
-      const manager = new Hammer.Manager(cardRef.current);
-      const swipe = new Hammer.Swipe();
-      manager.add(swipe);
-      manager.on('swipe', (event) => {
-        if (event.direction === Hammer.DIRECTION_LEFT) {
-          handlePrev();
-          console.log('swipe left');
-        } else if (event.direction === Hammer.DIRECTION_RIGHT) {
-          handleNext();
-          console.log('swipe right');
+    // Dynamically import Hammer.js only on the client side
+    const loadHammer = async () => {
+      if (typeof window !== 'undefined') {
+        const Hammer = (await import('hammerjs')).default;
+        if (cardRef.current) {
+          const manager = new Hammer.Manager(cardRef.current);
+          const swipe = new Hammer.Swipe();
+          manager.add(swipe);
+          manager.on('swipe', (event) => {
+            if (event.direction === Hammer.DIRECTION_LEFT) {
+              handlePrev();
+              console.log('swipe left');
+            } else if (event.direction === Hammer.DIRECTION_RIGHT) {
+              handleNext();
+              console.log('swipe right');
+            }
+          });
+          hammerManagerRef.current = manager; // Store the manager instance in a ref
         }
-      });
+      }
+    };
 
-      return () => {
-        manager.destroy();
-      };
-    }
-  }, [page, isSmallScreen, handlePrev, handleNext]); // Ensure handlePrev and handleNext are included in the dependency array
+    loadHammer();
+
+    // Cleanup on component unmount
+    return () => {
+      if (hammerManagerRef.current) {
+        hammerManagerRef.current.destroy();
+      }
+    };
+ }, [page, isSmallScreen, handlePrev, handleNext]) // Ensure handlePrev and handleNext are included in the dependency array
 
 
   // effect to determine data for RWD render
