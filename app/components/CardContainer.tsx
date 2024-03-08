@@ -31,6 +31,11 @@ const CardContainer = () => {
   // Calculate the total number of items
   const itemCount = data.length
 
+  // Calculate if there is a previous or next page
+  const hasNextPage = (page + 1) * (isSmallScreen ? 1 : 4) < itemCount;
+  const hasPreviousPage = page > 0;
+
+  // function for change page
   const handleNext = useCallback(() => {
     const itemsPerPage = isSmallScreen ? 1 : 4;
     const nextPageIndex = (page + 1) * itemsPerPage;
@@ -115,8 +120,8 @@ const CardContainer = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [page, isSmallScreen]);
 
+  // Reset page to 0 when isSmallScreen changes
   useEffect(() => {
-    // Reset page to 0 when isSmallScreen changes
     setPage(0);
   }, [isSmallScreen]);
 
@@ -125,7 +130,7 @@ const CardContainer = () => {
       {isSmallScreen?
         null:
         <div className='flex justify-end'>
-          <SwitchButton page={page} setPage={setPage}/>
+          <SwitchButton page={page} setPage={setPage} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage}/>
         </div>
       }
       <div className='flex flex-wrap justify-between space-x-4 w-full' ref={cardRef}>
